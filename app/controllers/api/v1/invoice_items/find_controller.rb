@@ -4,9 +4,7 @@ class Api::V1::Items::FindController < ApplicationController
   end
 
   def index
-    respond_with InvoiceItem.where(item_params).find_each do |item|
-      item
-    end
+    respond_with InvoiceItem.where(item_params)
   end
 
   private
