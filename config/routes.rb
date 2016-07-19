@@ -5,6 +5,10 @@ Rails.application.routes.draw do
         get '/find',     to: 'find#show', defaults: {format: :json}
         get '/find_all', to: 'find#index', defaults: {format: :json}
       end
+      namespace :customers do
+        get '/find',     to: 'find#show', defaults: {format: :json}
+        # get '/find_all', to: 'find#index', defaults: {format: :json}
+      end 
     end
   end
 
