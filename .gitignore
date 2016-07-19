@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+#Ignore secret files 
 /config/secrets.yml
 
 # Ignore Byebug command history file.
