@@ -1,10 +1,11 @@
-class Api::V1::Invoices::FindController < ApplicationController
+class Api::V1::InvoicesController < ApplicationController
+
   def index
-    respond_with Invoice.where(invoice_params)
+    respond_with Invoice.all
   end
 
   def show
-    respond_with Invoice.find_by(invoice_params)
+    respond_with Invoice.find(invoice_params[:id])
   end
 
   private
