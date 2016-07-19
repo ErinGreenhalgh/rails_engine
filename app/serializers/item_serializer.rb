@@ -3,6 +3,6 @@ class ItemSerializer < ActiveModel::Serializer
 
   def unit_price
     price = object.unit_price
-    price[0...-2] + price[-2..-1]
+    price[0...-2] + "." + price[-2..-1]
   end
 end
