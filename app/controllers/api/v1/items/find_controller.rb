@@ -3,6 +3,10 @@ class Api::V1::Items::FindController < ApplicationController
     respond_with Item.find_by(item_params)
   end
 
+  def index
+    respond_with Item.where(item_params)
+  end
+
   private
 
   def item_params
