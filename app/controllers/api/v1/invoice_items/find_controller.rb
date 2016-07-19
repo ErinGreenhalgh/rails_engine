@@ -5,7 +5,7 @@ class Api::V1::InvoiceItems::FindController < ApplicationController
   end
 
   def index
-    respond_with InvoiceItem.where(invoice_items_params)
+    respond_with InvoiceItem.where(item_params)
   end
 
   private
