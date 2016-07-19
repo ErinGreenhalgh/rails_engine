@@ -31,7 +31,8 @@ Rails.application.routes.draw do
       resources :items,          only: [:show, :index], defaults: {format: :json}
       resources :invoice_items,  only: [:show, :index], defaults: {format: :json}
       resources :invoices,       only: [:show, :index], defaults: {format: :json}
-      resources :customers, only: [:show, :index], defaults: {format: :json}
+      resources :customers,      only: [:show, :index], defaults: {format: :json}
+      resources :transactions,   only: [:show, :index], defaults: {format: :json}
     end
   end
 end
