@@ -5,7 +5,7 @@ class Api::V1::InvoiceItemsController < ApplicationController
   end
 
   def show
-    respond_with InvoiceItem.find(invoice_items_params[:id])
+    respond_with InvoiceItem.find(params[:id])
   end
 
   private
