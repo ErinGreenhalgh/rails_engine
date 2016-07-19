@@ -34,11 +34,11 @@ Rails.application.routes.draw do
       resources :customers, only: [:show, :index], defaults: {format: :json}
     end
   end
-  
+
   namespace :api do
     namespace :v1 do
       resources :invoices, only: [:show] do
-        get '/transactions', to: "invoices#transactions"
+        get '/transactions', to: "invoices#transactions", defaults: {format: :json}
       end
     end
   end

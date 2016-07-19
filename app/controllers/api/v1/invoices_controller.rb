@@ -5,12 +5,10 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   def show
-    respond_with Invoice.find(invoice_params[:id])
+    respond_with Invoice.find(params[:id])
   end
 
-  private
-
-  def invoice_params
-    params.permit(:status, :customer_id, :id, :created_at, :updated_at, :merchant_id)
+  def transactions
+    respond_with Invoice.find(params[:invoice_id]).transactions
   end
 end
