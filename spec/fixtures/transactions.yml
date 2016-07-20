@@ -6,7 +6,7 @@ one:
   updated_at: January 1, 2012
 
 two:
-  invoice_id: 980190962
+  invoice_id: 1
   credit_card_number: 45678
   result: failure
   created_at: January 1, 2012
