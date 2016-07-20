@@ -1,3 +1,4 @@
 one:
   name: Thingy
   description: a great Thingy
+  unit_price: 123456
