@@ -9,7 +9,7 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   def transactions
-    render json: invoice.transactions, each_serializer: TransactionSerializer
+    render json: invoice.transactions
   end
 
   def invoice_items
@@ -32,4 +32,5 @@ class Api::V1::InvoicesController < ApplicationController
   def invoice
     Invoice.find(params[:invoice_id])
   end
+
 end
