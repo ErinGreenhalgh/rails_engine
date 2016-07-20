@@ -9,6 +9,6 @@ RSpec.describe "load_csv" do
 
     LoadCsv.new(file_name, model)
 
-    expect(model.count).to eq 100
+    expect(model.exists?).to eq true
   end
 end
