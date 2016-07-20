@@ -5,6 +5,8 @@ class Merchant < ApplicationRecord
 
   def customers_pending_invoices
     self.customers.
-        where("invoices.status = 'pending'")
+         joins(:invoices, :transactions).
+         where(transactions: {result: "failed"}).
+         distinct
   end
 end
