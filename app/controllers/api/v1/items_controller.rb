@@ -1,11 +1,24 @@
 class Api::V1::ItemsController < ApplicationController
 
   def index
-    respond_with Item.all
+    render json: Item.all
   end
 
   def show
-    respond_with Item.find(params[:id])
+    render json: Item.find(params[:id])
   end
-  
+
+  def invoice_items
+    render json: item.invoice_items
+  end
+
+  def merchant
+    render json: item.merchant
+  end
+
+  private
+  def item
+    Item.find(params[:item_id])
+  end
+
 end
