@@ -8,7 +8,7 @@ class Merchant < ApplicationRecord
   def total_revenue
     revenue = successful_invoice_items.
     sum("invoice_items.quantity*CAST(invoice_items.unit_price AS integer)")
-    { "revenue" => "(revenue/ 100.0)"}
+    { "revenue" => (revenue/ 100.0).to_s}
   end
 
   def successful_invoice_items
