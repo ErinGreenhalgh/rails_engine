@@ -4,9 +4,10 @@ class Merchant < ApplicationRecord
   has_many :customers, through: :invoices
 
   def customers_pending_invoices
-    self.customers.
-         joins(:invoices, :transactions).
-         where(transactions: {result: "failed"}).
-         distinct
+    customers.joins(:invoices).
+    joins("INNER JOIN transactions on transactions.invoice_id=invoices.id").
+    where("transactions.result='failed'").
+    distinct
   end
+
 end
