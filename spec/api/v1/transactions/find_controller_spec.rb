@@ -118,22 +118,18 @@ RSpec.describe "transactions::find controller" do
 
     scenario "by invoice_id" do
       transaction1 = transactions(:one)
-      transaction2 = transactions(:two)
       get "/api/v1/transactions/find_all?invoice_id=#{transaction1.invoice_id}"
 
       assert_response :success
 
       response_transactions = JSON.parse(response.body)
 
-      expect(response_transactions.count).to eq 2
+      expect(response_transactions.count).to eq 1
 
       expect(transaction1.id).to eq(response_transactions.first["id"])
       expect(transaction1.credit_card_number).to eq(response_transactions.first["credit_card_number"])
       expect(transaction1.result).to eq(response_transactions.first["result"])
 
-      expect(transaction2.id).to eq(response_transactions.last["id"])
-      expect(transaction2.credit_card_number).to eq(response_transactions.last["credit_card_number"])
-      expect(transaction2.result).to eq(response_transactions.last["result"])
     end
 
     scenario "by result" do

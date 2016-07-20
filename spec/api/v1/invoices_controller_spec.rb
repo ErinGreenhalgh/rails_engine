@@ -10,7 +10,7 @@ RSpec.describe "invoices controller" do
     assert_response :success
     parsed_data = JSON.parse(response.body)
 
-    expect(parsed_data.count).to  eq(2)
+    expect(parsed_data.count).to  eq(1)
   end
 
   scenario "finds invoice items for an invoice" do
