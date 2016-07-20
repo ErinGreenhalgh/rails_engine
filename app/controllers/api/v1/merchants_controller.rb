@@ -16,6 +16,10 @@ class Api::V1::MerchantsController < ApplicationController
     render json: merchant.invoices
   end
 
+  def pending_customers
+    render json: merchant.customers_pending_invoices
+  end
+
   private
 
   def merchant
