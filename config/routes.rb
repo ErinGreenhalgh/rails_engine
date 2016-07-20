@@ -45,14 +45,19 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    namespace :v1 do
+    namespace :v1 , defaults: {format: :json} do
       resources :invoices, only: [:show] do
-        get '/transactions',  to: "invoices#transactions", defaults: {format: :json}
-        get '/invoice_items', to: "invoices#invoice_items", defaults: {format: :json}
-        get '/items',         to: "invoices#items", defaults: {format: :json}
-        get '/customer',      to: "invoices#customer", defaults: {format: :json}
-        get '/merchant',      to: "invoices#merchant", defaults: {format: :json}
+        get '/transactions',  to: "invoices#transactions"
+        get '/invoice_items', to: "invoices#invoice_items"
+        get '/items',         to: "invoices#items"
+        get '/customer',      to: "invoices#customer"
+        get '/merchant',      to: "invoices#merchant"
       end
+      resources :invoice_items, only: [:show] do
+        get '/invoice', to: "invoice_items#invoice"
+        get '/item',    to: "invoice_items#item"
+      end
+
     end
   end
 
