@@ -9,7 +9,7 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   def transactions
-    render json: invoice.transactions
+    render json: invoice.transactions, each_serializer: TransactionSerializer
   end
 
   def invoice_items
