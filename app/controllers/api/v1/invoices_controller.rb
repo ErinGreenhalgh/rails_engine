@@ -29,6 +29,7 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   private
+  
   def invoice
     Invoice.find(params[:invoice_id])
   end

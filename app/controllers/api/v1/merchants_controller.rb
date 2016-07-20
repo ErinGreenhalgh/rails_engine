@@ -11,4 +11,14 @@ class Api::V1::MerchantsController < ApplicationController
   def items
     render json: merchant.items
   end
+
+  def invoices
+    render json: merchant.invoices
+  end
+
+  private
+
+  def merchant
+    Merchant.find(params[:merchant_id])
+  end
 end

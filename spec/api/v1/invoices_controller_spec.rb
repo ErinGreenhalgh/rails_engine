@@ -4,7 +4,6 @@ RSpec.describe "invoices controller" do
   fixtures :invoices, :transactions, :items, :invoice_items, :customers, :merchants
   scenario "finds one invoice's transactions" do
     invoice     = invoices(:one)
-    transaction = transactions(:one)
 
     get "/api/v1/invoices/#{invoice.id}/transactions"
     assert_response :success

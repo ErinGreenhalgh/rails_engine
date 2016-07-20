@@ -27,8 +27,8 @@ Rails.application.routes.draw do
         get 'find_all', to: "find#index"
       end
       namespace :transactions do
-        get '/find',     to: "find#show", defaults: {format: :json}
-        get '/find_all', to: "find#index", defaults: {format: :json}
+        get '/find',     to: "find#show"
+        get '/find_all', to: "find#index"
       end
     end
   end
@@ -47,18 +47,17 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :invoices, only: [:show] do
-        get '/transactions',  to: "invoices#transactions",  defaults: {format: :json}
-        get '/invoice_items', to: "invoices#invoice_items", defaults: {format: :json}
-        get '/items',         to: "invoices#items",         defaults: {format: :json}
-        get '/customer',      to: "invoices#customer",      defaults: {format: :json}
-        get '/merchant',      to: "invoices#merchant",      defaults: {format: :json}
+        get '/transactions',  to: "invoices#transactions"
+        get '/invoice_items', to: "invoices#invoice_items"
+        get '/items',         to: "invoices#items"
+        get '/customer',      to: "invoices#customer"
+        get '/merchant',      to: "invoices#merchant"
       end
       resources :merchants, only: [:show], defaults: {format: :json} do
-        get '/items',         to: "merchants#items"
+        get '/items',            to: "merchants#items"
+        get '/invoices',         to: "merchants#invoices"
       end
     end
   end
-
-
 
 end

@@ -25,8 +25,7 @@ RSpec.describe "merchants controller" do
   end
 
   scenario "finds items associated with one merchant" do
-    merchant      = merchants(:one)
-    item          = items(:one)
+    merchant = merchants(:one)
 
     get "/api/v1/merchants/#{merchant.id}/items"
     assert_response :success
@@ -34,4 +33,16 @@ RSpec.describe "merchants controller" do
 
     expect(parsed_data.count).to eq(2)
   end
+
+  scenario "finds invoices associated with one merchant" do
+    merchant = merchants(:one)
+
+    get "/api/v1/merchants/#{merchant.id}/invoices"
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.count).to eq(1)
+    expect(parsed_data.first['status']).to eq("apple")
+  end
+
 end
