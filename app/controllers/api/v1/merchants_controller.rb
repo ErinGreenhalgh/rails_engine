@@ -1,9 +1,14 @@
 class Api::V1::MerchantsController < ApplicationController
-  def show
-    respond_with Merchant.find(params[:id])
-  end
 
   def index
-    respond_with Merchant.all
+    render json: Merchant.all
+  end
+
+  def show
+    render json: Merchant.find(params[:id])
+  end
+
+  def items
+    render json: merchant.items
   end
 end

@@ -53,7 +53,12 @@ Rails.application.routes.draw do
         get '/customer',      to: "invoices#customer",      defaults: {format: :json}
         get '/merchant',      to: "invoices#merchant",      defaults: {format: :json}
       end
+      resources :merchants, only: [:show], defaults: {format: :json} do
+        get '/items',         to: "merchants#items"
+      end
     end
   end
+
+
 
 end

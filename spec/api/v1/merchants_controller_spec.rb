@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "merchants controller" do
-  fixtures :merchants
+  fixtures :merchants, :items
   scenario "shows all merchants" do
     get '/api/v1/merchants'
 
@@ -22,5 +22,16 @@ RSpec.describe "merchants controller" do
     response_merchant = JSON.parse(response.body)
 
     assert_equal merchant.name, response_merchant["name"]
+  end
+
+  scenario "finds items associated with one merchant" do
+    merchant      = merchants(:one)
+    item          = items(:one)
+
+    get "/api/v1/merchants/#{merchant.id}/items"
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.count).to eq(2)
   end
 end
