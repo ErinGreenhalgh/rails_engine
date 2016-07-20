@@ -25,4 +25,15 @@ RSpec.describe "transactions controller" do
     assert_equal transaction.credit_card_number, response_transaction["credit_card_number"]
     assert_equal transaction.result,             response_transaction["result"]
   end
+
+  scenario "finds the associated invoice" do
+    transaction = transactions(:one)
+
+    get "/api/v1/transactions/#{transaction.id}/invoice"
+    assert_response :success
+    parsed_invoice = JSON.parse(response.body)
+
+    expect(parsed_invoice['id']).to eq(transaction.invoice_id)
+  end
+
 end
