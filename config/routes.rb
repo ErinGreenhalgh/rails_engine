@@ -27,8 +27,8 @@ Rails.application.routes.draw do
         get 'find_all', to: "find#index"
       end
       namespace :transactions do
-        get '/find',     to: "find#show", defaults: {format: :json}
-        get '/find_all', to: "find#index", defaults: {format: :json}
+        get '/find',     to: "find#show"
+        get '/find_all', to: "find#index"
       end
     end
   end
