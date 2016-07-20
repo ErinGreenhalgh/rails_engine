@@ -1,0 +1,11 @@
+one:
+  name: Thingy
+  description: a great Thingy
+  unit_price: 123456
+  merchant_id: 980190962
+
+two:
+  name: Thingy2
+  description: a great Thingy2
+  unit_price: 1234562
+  merchant_id: 980190962
