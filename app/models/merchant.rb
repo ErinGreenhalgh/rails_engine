@@ -6,8 +6,9 @@ class Merchant < ApplicationRecord
   has_many :transactions, through: :invoices
 
   def total_revenue
-    successfull_invoice_items.
+    revenue = successful_invoice_items.
     sum("invoice_items.quantity*CAST(invoice_items.unit_price AS integer)")
+    { "revenue" => "(revenue/ 100.0)"}
   end
 
   def successful_invoice_items

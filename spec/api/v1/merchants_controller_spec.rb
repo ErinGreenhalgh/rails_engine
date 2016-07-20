@@ -47,5 +47,4 @@ RSpec.describe "merchants controller" do
     expect(parsed_data.count).to eq(1)
     expect(parsed_data.first['status']).to eq(invoice.status)
   end
-
 end

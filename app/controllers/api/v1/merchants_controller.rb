@@ -16,6 +16,10 @@ class Api::V1::MerchantsController < ApplicationController
     render json: merchant.invoices
   end
 
+  def revenue
+    render json: merchant.total_revenue
+  end
+
   private
 
   def merchant
