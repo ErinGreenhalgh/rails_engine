@@ -1,9 +1,23 @@
 class Api::V1::CustomersController < ApplicationController
   def show
-    respond_with Customer.find(params[:id])
+    render json: Customer.find(params[:id])
   end
 
   def index
-    respond_with Customer.all
+    render json: Customer.all
+  end
+
+  def invoices
+    render json: customer.invoices
+  end
+
+  def transactions
+    render json: customer.transactions
+  end
+
+  private
+
+  def customer
+    Customer.find(params[:customer_id])
   end
 end

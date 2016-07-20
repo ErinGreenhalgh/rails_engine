@@ -11,6 +11,7 @@ RSpec.describe "invoices controller" do
     parsed_data = JSON.parse(response.body)
 
     expect(parsed_data.count).to  eq(1)
+    expect(parsed_data.first['invoice_id']).to  eq(transaction.invoice_id)
   end
 
   scenario "finds invoice items for an invoice" do
