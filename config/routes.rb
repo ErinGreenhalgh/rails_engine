@@ -55,7 +55,11 @@ Rails.application.routes.draw do
       end
       resources :items, only: [:show] do
         get '/invoice_items', to: "items#invoice_items"
-        get '/merchant', to: "items#merchant"
+        get '/merchant',      to: "items#merchant"
+      end
+      resources :customers, only: [:show] do
+        get '/invoices',     to: "customers#invoices"
+        get '/transactions', to: "customers#transactions"
       end
     end
   end
