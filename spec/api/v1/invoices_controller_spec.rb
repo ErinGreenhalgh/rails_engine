@@ -4,12 +4,14 @@ RSpec.describe "invoices controller" do
   fixtures :invoices, :transactions, :items, :invoice_items, :customers, :merchants
   scenario "finds one invoice's transactions" do
     invoice     = invoices(:one)
+    transaction = transactions(:one)
 
     get "/api/v1/invoices/#{invoice.id}/transactions"
     assert_response :success
     parsed_data = JSON.parse(response.body)
 
     expect(parsed_data.count).to  eq(2)
+    expect(parsed_data.first['invoice_id']).to  eq(transaction.invoice_id)
   end
 
   scenario "finds invoice items for an invoice" do
