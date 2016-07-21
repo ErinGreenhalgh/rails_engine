@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "merchants controller" do
-  fixtures :merchants, :items, :invoices
+  fixtures :merchants, :items, :invoices, :customers
   scenario "shows all merchants" do
     get '/api/v1/merchants'
 
@@ -9,7 +9,7 @@ RSpec.describe "merchants controller" do
 
     merchants = JSON.parse(body)
 
-    assert_equal 2, merchants.count
+    assert_equal Merchant.count, merchants.count
   end
 
   scenario "shows on merchant" do
@@ -33,7 +33,7 @@ RSpec.describe "merchants controller" do
     parsed_data = JSON.parse(response.body)
 
     expect(parsed_data.count).to eq(2)
-    expect(parsed_data.first['name']).to eq(item.name)
+    expect(parsed_data.first['name']).to eq("Thingy2")
   end
 
   scenario "finds invoices associated with one merchant" do
@@ -44,8 +44,30 @@ RSpec.describe "merchants controller" do
     assert_response :success
     parsed_data = JSON.parse(response.body)
 
-    expect(parsed_data.count).to eq(1)
+    expect(parsed_data.count).to eq(2)
     expect(parsed_data.first['status']).to eq(invoice.status)
+  end
+
+  scenario "gets customers associated w/ merchant w/ pending invoices" do
+    merchant         = merchants(:one)
+    pending_customer = customers(:one)
+
+    get "/api/v1/merchants/#{merchant.id}/customers_with_pending_invoices"
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.first['first_name']).to eq(pending_customer.first_name)
+  end
+
+  scenario "gets favorite customer associated with merchant" do
+    merchant         = merchants(:one)
+    customer         = customers(:one)
+
+    get "/api/v1/merchants/#{merchant.id}/favorite_customer"
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.first).to eq(["id", 980190962])
   end
 
 end

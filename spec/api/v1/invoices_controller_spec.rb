@@ -2,6 +2,27 @@ require "rails_helper"
 
 RSpec.describe "invoices controller" do
   fixtures :invoices, :transactions, :items, :invoice_items, :customers, :merchants
+  scenario "displays all invoices" do
+
+    get "/api/v1/invoices"
+
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.count).to eq 3
+  end
+
+  scenario "displays one invoice" do
+    invoice = invoices(:one)
+
+    get "/api/v1/invoices/#{invoice.id}"
+    assert_response :success
+
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.first).to eq(["id", 980190962])
+  end
+
   scenario "finds one invoice's transactions" do
     invoice     = invoices(:one)
     transaction = transactions(:one)
@@ -10,7 +31,7 @@ RSpec.describe "invoices controller" do
     assert_response :success
     parsed_data = JSON.parse(response.body)
 
-    expect(parsed_data.count).to  eq(1)
+    expect(parsed_data.count).to  eq(3)
     expect(parsed_data.first['invoice_id']).to  eq(transaction.invoice_id)
   end
 
@@ -22,7 +43,7 @@ RSpec.describe "invoices controller" do
 
     parsed_data = JSON.parse(response.body)
 
-    expect(parsed_data.count).to eq 1
+    expect(parsed_data.count).to eq 4
     expect(parsed_data.first["quantity"]).to eq invoice_item.quantity
     expect(parsed_data.first["unit_price"]).to eq invoice_item.unit_price
    end
@@ -34,7 +55,7 @@ RSpec.describe "invoices controller" do
     assert_response :success
     parsed_data = JSON.parse(response.body)
 
-    expect(parsed_data.count).to eq 1
+    expect(parsed_data.count).to eq 4
     expect(parsed_data.first["name"]).to eq item.name
     expect(parsed_data.first["description"]).to eq item.description
   end

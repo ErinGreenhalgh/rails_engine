@@ -17,6 +17,7 @@ class Api::V1::InvoiceItemsController < ApplicationController
   end
 
   private
+  
   def invoice_item
     InvoiceItem.find(params[:invoice_item_id])
   end
