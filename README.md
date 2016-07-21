@@ -1,24 +1,33 @@
-# README
+#Rails Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Development Team
+* [Erin Greenhalgh](https://github.com/eringreenhalgh)
+* [Karina Gonzalez](https://github.com/karinamzalez)
 
-Things you may want to cover:
+This project was built as part of the curriculum at the Turing School of Software and Design. For full project specifications please see the [original assignment](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/rails_engine.md).
 
-* Ruby version
+###Deployment & Testing
 
-* System dependencies
+1.Clone the repo and bundle
 
-* Configuration
+```bash
+git clone https://github.com/ErinGreenhalgh/rails_engine
+cd rails_engine
+bundle
+```
 
-* Database creation
+2.Create and migrate the database
 
-* Database initialization
+`rake db:create db:migrate`
 
-* How to run the test suite
+3.Import the csv files data
 
-* Services (job queues, cache servers, search engines, etc.)
+`rake all_data:import`
 
-* Deployment instructions
+4.Run the test suite
 
-* ...
+`rspec`
+
+5.Run the server
+
+`rails s`
