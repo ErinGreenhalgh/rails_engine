@@ -3,3 +3,27 @@ one:
   invoice_id: 980190962
   quantity: 12
   unit_price: 3.99
+
+two:
+  item_id: 980190962
+  invoice_id: 980190962
+  quantity: 12
+  unit_price: 3.99
+
+three:
+  item_id: 980190962
+  invoice: one
+  quantity: 12
+  unit_price: 3.99
+
+four:
+  item_id: 980190962
+  invoice: one
+  quantity: 12
+  unit_price: 3.99
+
+five:
+  item_id: 980190962
+  invoice: three
+  quantity: 12
+  unit_price: 3.99

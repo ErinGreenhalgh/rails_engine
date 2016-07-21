@@ -16,6 +16,10 @@ class Api::V1::MerchantsController < ApplicationController
     render json: merchant.invoices
   end
 
+  def revenue
+    render json: merchant.total_revenue
+  end
+
   def pending_customers
     render json: merchant.customers_pending_invoices
   end
@@ -23,6 +27,10 @@ class Api::V1::MerchantsController < ApplicationController
   def fav_customer
     render json: merchant.favorite_customer
   end
+
+  # def most_items
+  #   render json: Merchant.most_items(params[:quantity])
+  # end
 
   private
 

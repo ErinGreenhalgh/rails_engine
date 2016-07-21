@@ -19,6 +19,10 @@ class Api::V1::Merchants::FindController < ApplicationController
 
   end
 
+  def most_items
+    render json: Merchant.most_items(params[:quantity])
+  end
+
 private
 
   def merchant_params

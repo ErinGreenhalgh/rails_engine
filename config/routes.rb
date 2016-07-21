@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         get '/find_all', to: 'find#index'
         get '/revenue',  to: 'find#revenue_for_date_all_merchants'
         get '/most_revenue', to: "find#merchants_most_revenue"
+        get '/most_items', to: "find#most_items"
       end
       namespace :customers do
         get '/find',     to: 'find#show'
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
         get '/items',             to: "merchants#items"
         get '/invoices',          to: "merchants#invoices"
         get '/favorite_customer', to: "merchants#fav_customer"
+        get '/revenue',           to: "merchants#revenue"
         get '/customers_with_pending_invoices', to: "merchants#pending_customers"
       end
       resources :items, only: [:show] do
@@ -66,8 +68,9 @@ Rails.application.routes.draw do
         get '/merchant',      to: "items#merchant"
       end
       resources :customers, only: [:show] do
-        get '/invoices',     to: "customers#invoices"
-        get '/transactions', to: "customers#transactions"
+        get '/invoices',          to: "customers#invoices"
+        get '/transactions',      to: "customers#transactions"
+        get '/favorite_merchant', to: "customers#favorite_merchant"
       end
       resources :invoice_items, only: [:show] do
         get '/invoice', to: "invoice_items#invoice"
