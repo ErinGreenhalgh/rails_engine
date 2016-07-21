@@ -15,6 +15,10 @@ class Api::V1::CustomersController < ApplicationController
     render json: customer.transactions
   end
 
+  def favorite_merchant
+    render json: customer.favorite_merchant
+  end
+
   private
 
   def customer
