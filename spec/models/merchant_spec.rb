@@ -46,7 +46,7 @@ RSpec.describe Merchant, type: :model do
     invoice = invoices(:one)
     total_revenue = Merchant.revenue_for_date_accross_all_merchants(invoice.created_at)
 
-    expect(total_revenue).to eq("total_revenue" => "2.88")
+    expect(total_revenue).to eq("total_revenue" => "8.0")
   end
 
   it "gets specified amount of merchants with most revenue" do
