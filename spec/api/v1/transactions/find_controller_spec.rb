@@ -124,7 +124,7 @@ RSpec.describe "transactions::find controller" do
 
       response_transactions = JSON.parse(response.body)
 
-      expect(response_transactions.count).to eq 1
+      expect(response_transactions.count).to eq 2
 
       expect(transaction1.id).to eq(response_transactions.first["id"])
       expect(transaction1.credit_card_number).to eq(response_transactions.first["credit_card_number"])

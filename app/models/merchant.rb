@@ -8,7 +8,7 @@ class Merchant < ApplicationRecord
   def total_revenue
     revenue = successful_invoice_items.
     sum("invoice_items.quantity*CAST(invoice_items.unit_price AS integer)")
-    # { "revenue" => (revenue/ 100.0).to_s }
+    { "revenue" => (revenue/ 100.0).round(2).to_s }
   end
 
   def successful_invoice_items
@@ -28,5 +28,12 @@ class Merchant < ApplicationRecord
     group("merchants.id").
     order("sum(invoice_items.quantity) DESC").
     limit(number_of_records)
+  end
+
+  def customers_pending_invoices
+    customers.joins(:invoices).
+    joins("INNER JOIN transactions on transactions.invoice_id=invoices.id").
+    where("transactions.result='failed'").
+    distinct
   end
 end
