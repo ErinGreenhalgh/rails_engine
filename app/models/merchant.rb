@@ -10,10 +10,11 @@ class Merchant < ApplicationRecord
     distinct
   end
 
-  def revenue_for_date
-    successful_invoice_items.
+  def self.revenue_for_date_accross_all_merchants(date)
+    joins(:invoices, :transactions, :invoice_items).
+    where.not("transactions.result = 'failed'").
+    where(invoices: {created_at: date}).
     sum("invoice_items.quantity*CAST(invoice_items.unit_price AS integer)")
-    # { "revenue" => (revenue/ 100.0).to_s }
   end
 
 end

@@ -20,6 +20,10 @@ class Api::V1::MerchantsController < ApplicationController
     render json: merchant.customers_pending_invoices
   end
 
+  def revenue_for_date_all_merchants
+    render json: Merchant.revenue_for_date_accross_all_merchants(params[:date])
+  end
+
   private
 
   def merchant

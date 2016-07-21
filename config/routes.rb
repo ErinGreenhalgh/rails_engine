@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       namespace :merchants do
         get '/find',     to: 'find#show'
         get '/find_all', to: 'find#index'
+        get '/revenue',  to: 'merchants#revenue_for_date_all_merchants'
       end
       namespace :customers do
         get '/find',     to: 'find#show'
