@@ -9,7 +9,7 @@ RSpec.describe "merchants controller" do
 
     merchants = JSON.parse(body)
 
-    assert_equal 2, merchants.count
+    assert_equal Merchant.count, merchants.count
   end
 
   scenario "shows on merchant" do
