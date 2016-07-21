@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  fixtures :customers, :transactions, :invoices, :merchants
+  scenario "finds the favorite merchant for a customer" do
+    customer = customers(:one)
+    merchant = merchants(:one)
+
+    expect(customer.favorite_merchant).to eq merchant
+  end
 end
