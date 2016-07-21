@@ -7,6 +7,10 @@ class Api::V1::Customers::FindController < ApplicationController
     respond_with Customer.where(customer_params)
   end
 
+  def random
+    render json: Customer.random
+  end
+
 private
   def customer_params
     params.permit(:first_name, :last_name, :id, :created_at, :updated_at)

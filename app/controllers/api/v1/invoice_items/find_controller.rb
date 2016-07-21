@@ -1,11 +1,15 @@
 class Api::V1::InvoiceItems::FindController < ApplicationController
 
   def show
-    respond_with InvoiceItem.find_by(invoice_items_params)
+    render json: InvoiceItem.find_by(invoice_items_params)
   end
 
   def index
-    respond_with InvoiceItem.where(invoice_items_params)
+    render json: InvoiceItem.where(invoice_items_params)
+  end
+
+  def random
+    render json: InvoiceItem.random
   end
 
   private

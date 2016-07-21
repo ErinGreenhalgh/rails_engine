@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe Merchant, type: :model do
   fixtures :merchants, :invoices, :items, :invoice_items, :transactions, :customers
 
+  it { should have_many :items }
+  it { should have_many :invoices }
+  it { should have_many :invoice_items }
+  it { should have_many :customers }
+  it { should have_many :transactions }
+
   scenario "finds the total revenue for a specifc merchant across all transactions" do
     merchant = create(:merchant)
     invoice1 = create(:invoice, merchant: merchant)
