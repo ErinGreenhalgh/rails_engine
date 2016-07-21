@@ -10,9 +10,11 @@ This project was built as part of the curriculum at the Turing School of Softwar
 
 1. Clone the repo and bundle
 
-`git clone https://github.com/ErinGreenhalgh/rails_engine`
+```bash
+git clone https://github.com/ErinGreenhalgh/rails_engine
 cd rails_engine
-bundle`
+bundle
+```
 
 2. Create and migrate the database
 
