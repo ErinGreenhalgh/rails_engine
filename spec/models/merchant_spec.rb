@@ -9,7 +9,7 @@ RSpec.describe Merchant, type: :model do
     invoice2 = create(:invoice, merchant: merchant)
 
     transaction1 = create(:transaction, result: "success", invoice: invoice1)
-    transaction1 = create(:transaction, result: "failed", invoice: invoice2)
+    transaction2 = create(:transaction, result: "failed", invoice: invoice2)
 
     invoice_item1 = create(:invoice_item, invoice: invoice1)
     invoice_item2 = create(:invoice_item, invoice: invoice1)
@@ -22,8 +22,8 @@ RSpec.describe Merchant, type: :model do
     merchant1 = merchants(:one)
     merchant2 = merchants(:two)
 
-    expect(Merchant.most_items(2).last).to eq merchant2
-    expect(Merchant.most_items(1).first).to eq merchant1
+    expect(Merchant.most_items(2).last).to eq merchant1
+    expect(Merchant.most_items(1).first).to eq merchant2
   end
 
   it "gets list of customers with pending invoices" do
@@ -59,5 +59,15 @@ RSpec.describe Merchant, type: :model do
     favorite = merchant.favorite_customer
 
     expect(favorite).to eq(customer)
+  end
+
+  it "gets the total revenue for a merchant on a given date" do
+    merchant = merchants(:one)
+    invoice = invoices(:one)
+    invoice_item = invoice_items(:one)
+
+    date = "2012-03-27 14:53:59"
+
+    expect(merchant.total_revenue_for_date(date)).to eq ({"revenue" => "8.0"})
   end
 end

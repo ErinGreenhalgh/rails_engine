@@ -9,6 +9,6 @@ class Item < ApplicationRecord
   default_scope {order("id ASC")}
 
   def format_price
-    self.unit_price = (unit_price.to_i / 100)
+    self.unit_price = (unit_price.to_i / 100.00).round(2)
   end
 end

@@ -17,7 +17,11 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def revenue
-    render json: merchant.total_revenue
+    if params[:date]
+      render json: merchant.total_revenue_for_date(params[:date])
+    else
+      render json: merchant.total_revenue
+    end
   end
 
   def pending_customers
@@ -28,9 +32,9 @@ class Api::V1::MerchantsController < ApplicationController
     render json: merchant.favorite_customer
   end
 
-  # def most_items
-  #   render json: Merchant.most_items(params[:quantity])
-  # end
+  def most_items
+    render json: Merchant.most_items(params[:quantity])
+  end
 
   private
 
