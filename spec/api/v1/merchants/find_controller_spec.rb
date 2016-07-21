@@ -77,21 +77,16 @@ RSpec.describe "merchants find controller" do
 
     scenario "by created_at" do
       merchant1 = merchants(:one)
-      merchant2 = merchants(:two)
 
       get "/api/v1/merchants/find_all?created_at=#{merchant1.created_at}"
       assert_response :success
       data = JSON.parse(response.body)
-      assert_equal merchant1.id, data.first["id"]
-      assert_equal merchant1.name, data.first["name"]
-
-      assert_equal merchant2.id, data.last["id"]
-      assert_equal merchant2.name, data.last["name"]
+      assert merchant1.id, data.first["id"]
+      assert merchant1.name, data.first["name"]
     end
 
     scenario "by updated_at" do
       merchant1 = merchants(:one)
-      merchant2 = merchants(:two)
 
       get "/api/v1/merchants/find_all?updated_at=#{merchant1.updated_at}"
       assert_response :success
@@ -99,8 +94,6 @@ RSpec.describe "merchants find controller" do
       assert_equal merchant1.id, data.first["id"]
       assert_equal merchant1.name, data.first["name"]
 
-      assert_equal merchant2.id, data.last["id"]
-      assert_equal merchant2.name, data.last["name"]
     end
   end
 
