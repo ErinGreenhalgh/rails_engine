@@ -18,7 +18,7 @@ bundle
 
 2. Create and migrate the database
 
-`rake db:create db:migrate'
+`rake db:create db:migrate`
 
 3. Import the csv files data
 
