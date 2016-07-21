@@ -28,6 +28,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'simplecov'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
