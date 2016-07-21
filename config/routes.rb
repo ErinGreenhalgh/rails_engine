@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       resources :merchants, only: [:show], defaults: {format: :json} do
         get '/items',            to: "merchants#items"
         get '/invoices',         to: "merchants#invoices"
+        get '/customers_with_pending_invoices', to: "merchants#pending_customers"
       end
       resources :items, only: [:show] do
         get '/invoice_items', to: "items#invoice_items"
