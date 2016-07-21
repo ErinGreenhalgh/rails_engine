@@ -27,12 +27,6 @@ class Merchant < ApplicationRecord
     where("transactions.result = 'success'").
     group("merchants.id").
     order("sum(invoice_items.quantity) DESC").
-    limit(number_of_orders)
-  end
-
-  def self.pending_customers
-    Customer.joins(:invoices, :transactions).
-    where("transactions.result = 'failed'").
-    where("invoices.merchant_id=#{self.id}").distinct
+    limit(number_of_records)
   end
 end

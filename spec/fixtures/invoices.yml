@@ -2,3 +2,13 @@ one:
   status:      apple
   customer_id: 980190962
   merchant_id: 980190962
+
+two:
+  status:      apple
+  customer_id: 980190962
+  merchant_id: 980190962
+
+three:
+    status:      apple
+    customer_id: 980190962
+    merchant_id: 113629430
