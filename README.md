@@ -6,7 +6,7 @@
 
 This project was built as part of the curriculum at the Turing School of Software and Design. For full project specifications please see the [original assignment](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/rails_engine.md).
 
-Deployment & Testing
+###Deployment & Testing
 
 1. Clone the repo and bundle
 
