@@ -27,3 +27,6 @@ bundle
 4. Run the test suite
 
 `rspec`
+
+5. Run the server
+`rails s`
