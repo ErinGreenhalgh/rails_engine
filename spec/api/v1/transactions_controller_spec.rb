@@ -10,7 +10,7 @@ RSpec.describe "transactions controller" do
     assert_response :success
 
     response_transactions = JSON.parse(response.body)
-    assert_equal 2, response_transactions.count
+    assert_equal 4, response_transactions.count
   end
 
   scenario "finds one transaction" do

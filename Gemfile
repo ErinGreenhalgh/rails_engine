@@ -27,6 +27,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.4'
   gem 'simplecov'
+  gem 'factory_girl_rails'
 end
 
 group :development do

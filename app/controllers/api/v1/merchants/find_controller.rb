@@ -7,6 +7,10 @@ class Api::V1::Merchants::FindController < ApplicationController
     respond_with Merchant.where(merchant_params)
   end
 
+  def most_items
+    render json: Merchant.most_items(params[:quantity])
+  end
+
 private
   def merchant_params
     params.permit(:name, :id, :created_at, :updated_at)

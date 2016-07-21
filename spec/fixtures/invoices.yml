@@ -1,9 +1,14 @@
 one:
   status:      shipped
   customer_id: 980190962
-  merchant_id: 980190962
+  merchant: one
 
 two:
   status:      shipped
   customer_id: 980190962
-  merchant_id: 980190962
+  merchant: one
+
+three:
+    status:      apple
+    customer_id: 980190962
+    merchant: two
