@@ -11,8 +11,8 @@ Deployment & Testing
 1. Clone the repo and bundle
 
 `git clone https://github.com/ErinGreenhalgh/rails_engine`
-`cd rails_engine`
-`bundle`
+cd rails_engine
+bundle`
 
 2. Create and migrate the database
 
