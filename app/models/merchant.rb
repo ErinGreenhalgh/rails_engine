@@ -17,11 +17,6 @@ class Merchant < ApplicationRecord
     where.not("transactions.result = 'failed'")
   end
 
-  def total_revenue_for_date(date)
-    successful_invoice_items.where(created_at: date).
-    sum("invoice_items.quantity*CAST(invoice_items.unit_price AS integer)")
-  end
-
   def self.most_items(number_of_records)
     self.joins(invoices: [:transactions, :invoice_items]).
     where("transactions.result = 'success'").
