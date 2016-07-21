@@ -35,4 +35,8 @@ class Merchant < ApplicationRecord
     .limit(1).take
   end
 
+  def method_name
+
+  end
+
 end

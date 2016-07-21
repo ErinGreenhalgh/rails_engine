@@ -12,10 +12,13 @@ RSpec.describe Merchant, type: :model do
     expect(customer_pending_invoice).to eq(customer)
   end
 
-  it "gets total revenue for given date accross all merchants" do
-    invoice = invoices(:one)
-    total_revenue = Merchant.revenue_for_date_all_merchants(invoice.created_at)
-# byebug
-    expect(total_revenue).to eq("")
+  # it "gets total revenue for given date accross all merchants" do
+  #   invoice = invoices(:one)
+  #   total_revenue = Merchant.revenue_for_date_accross_all_merchants(invoice.created_at)
+  #
+  #   expect(total_revenue).to eq("")
+  # end
+  def method_name
+
   end
 end

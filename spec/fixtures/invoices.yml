@@ -2,6 +2,7 @@ one:
   status:      shipped
   customer_id: 980190962
   merchant_id: 980190962
+  created_at:  "2012-03-16 11:55:05"
 
 two:
   status:      shipped
