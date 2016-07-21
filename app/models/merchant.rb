@@ -31,4 +31,5 @@ class Merchant < ApplicationRecord
     where("transactions.result='failed'").
     distinct
   end
+
 end

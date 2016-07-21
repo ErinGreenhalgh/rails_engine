@@ -11,6 +11,10 @@ class Api::V1::Merchants::FindController < ApplicationController
     render json: Merchant.most_items(params[:quantity])
   end
 
+  def random
+    render json: Merchant.random
+  end
+
 private
   def merchant_params
     params.permit(:name, :id, :created_at, :updated_at)
