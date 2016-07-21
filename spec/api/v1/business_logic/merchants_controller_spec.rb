@@ -34,6 +34,6 @@ RSpec.describe "merchants controller" do
     data = JSON.parse(response.body)
 
     expect(data.count).to eq 2
-    expect(data.first["name"]).to eq merchant1.name
+    expect(data.first["name"]).to eq merchant2.name
   end
 end
