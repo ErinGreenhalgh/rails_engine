@@ -2,28 +2,28 @@ one:
   item_id: 980190962
   invoice_id: 980190962
   quantity: 12
-  unit_price: 3.99
+  unit_price: 3
 
 two:
   item_id: 980190962
   invoice_id: 980190962
   quantity: 12
-  unit_price: 3.99
+  unit_price: 3
 
 three:
   item_id: 980190962
   invoice: one
   quantity: 12
-  unit_price: 3.99
+  unit_price: 3
 
 four:
   item_id: 980190962
   invoice: one
   quantity: 12
-  unit_price: 3.99
+  unit_price: 3
 
 five:
   item_id: 980190962
   invoice: three
   quantity: 12
-  unit_price: 3.99
+  unit_price: 3

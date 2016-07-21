@@ -15,10 +15,6 @@ class Api::V1::Merchants::FindController < ApplicationController
     render json: Merchant.all_merchants_most_revenue(params[:quantity])
   end
 
-  def fav_customer
-
-  end
-
   def most_items
     render json: Merchant.most_items(params[:quantity])
   end
