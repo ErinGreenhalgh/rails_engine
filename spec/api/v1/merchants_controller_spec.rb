@@ -33,7 +33,7 @@ RSpec.describe "merchants controller" do
     parsed_data = JSON.parse(response.body)
 
     expect(parsed_data.count).to eq(2)
-    expect(parsed_data.first['name']).to eq(item.name)
+    expect(parsed_data.first['name']).to eq("Thingy2")
   end
 
   scenario "finds invoices associated with one merchant" do
@@ -58,4 +58,16 @@ RSpec.describe "merchants controller" do
 
     expect(parsed_data.first['first_name']).to eq(pending_customer.first_name)
   end
+
+  scenario "gets favorite customer associated with merchant" do
+    merchant         = merchants(:one)
+    customer         = customers(:one)
+
+    get "/api/v1/merchants/#{merchant.id}/favorite_customer"
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.first).to eq(["id", 980190962])
+  end
+
 end

@@ -42,6 +42,31 @@ RSpec.describe Merchant, type: :model do
     expect(customer_pending_invoice).to eq(customer)
   end
 
+  it "gets total revenue for given date accross all merchants" do
+    invoice = invoices(:one)
+    total_revenue = Merchant.revenue_for_date_accross_all_merchants(invoice.created_at)
+
+    expect(total_revenue).to eq("total_revenue" => "8.0")
+  end
+
+  it "gets specified amount of merchants with most revenue" do
+    merchant = merchants(:one)
+    merchant2 = merchants(:two)
+
+    top_merchants = Merchant.all_merchants_most_revenue(2)
+
+    expect(top_merchants.first).to eq(merchant)
+    expect(top_merchants.last).to eq(merchant2)
+  end
+
+  it "gets favorite_customer" do
+    merchant = merchants(:one)
+    customer = customers(:one)
+    favorite = merchant.favorite_customer
+
+    expect(favorite).to eq(customer)
+  end
+
   it "gets the total revenue for a merchant on a given date" do
     merchant = merchants(:one)
     invoice = invoices(:one)

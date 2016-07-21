@@ -2,6 +2,26 @@ require "rails_helper"
 
 RSpec.describe "items controller" do
   fixtures :items, :invoice_items, :merchants
+  scenario "displays all items" do
+    get "/api/v1/items"
+
+    assert_response :success
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.count).to eq 2
+  end
+
+  scenario "displays one item" do
+    item = items(:one)
+
+    get "/api/v1/invoices/#{item.id}"
+    assert_response :success
+
+    parsed_data = JSON.parse(response.body)
+
+    expect(parsed_data.first).to eq(["id", 980190962])
+  end
+
   scenario "finds related invoice items for an item" do
     item = items(:one)
     invoice_item = invoice_items(:one)
