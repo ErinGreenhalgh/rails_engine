@@ -29,4 +29,5 @@ bundle
 `rspec`
 
 5. Run the server
+
 `rails s`
