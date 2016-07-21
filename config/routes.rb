@@ -2,13 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1, defaults: {format: :json}  do
-      namespace :items do
-        get 'find',     to: "find#show"
-        get 'find_all', to: "find#index"
-      end
       namespace :invoices do
         get 'find',     to: "find#show"
         get 'find_all', to: "find#index"
+        get '/random',  to: "find#random"
       end
       namespace :merchants do
         get '/find',     to: 'find#show'
@@ -16,22 +13,27 @@ Rails.application.routes.draw do
         get '/revenue',  to: 'find#revenue_for_date_all_merchants'
         get '/most_revenue', to: "find#merchants_most_revenue"
         get '/most_items', to: "find#most_items"
+        get '/random',     to: "find#random"
       end
       namespace :customers do
         get '/find',     to: 'find#show'
         get '/find_all', to: 'find#index'
+        get '/random',   to: "find#random"
       end
       namespace :invoice_items do
         get 'find',     to: "find#show"
         get 'find_all', to: "find#index"
+        get '/random',  to: "find#random"
       end
       namespace :items do
         get 'find',     to: "find#show"
         get 'find_all', to: "find#index"
+        get '/random',  to: "find#random"
       end
       namespace :transactions do
         get '/find',     to: "find#show"
         get '/find_all', to: "find#index"
+        get '/random',   to: "find#random"
       end
     end
   end

@@ -1,10 +1,14 @@
 class Api::V1::Items::FindController < ApplicationController
   def show
-    respond_with Item.find_by(item_params)
+    render json: Item.find_by(item_params)
   end
 
   def index
-    respond_with Item.where(item_params)
+    render json: Item.where(item_params)
+  end
+
+  def random
+    render json: Item.random
   end
 
   private
