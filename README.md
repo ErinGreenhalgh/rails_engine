@@ -10,16 +10,18 @@ Deployment & Testing
 
 1. Clone the repo and bundle
 
-$ git clone https://github.com/ErinGreenhalgh/rails_engine
-$ cd rails_engine
-$ bundle
+`git clone https://github.com/ErinGreenhalgh/rails_engine`
+`cd rails_engine`
+`bundle`
 
 2. Create and migrate the database
 
-$ rake db:setup
+`rake db:setup`
+
 3. Import the csv files data
 
-$ rake all_data:import
+`rake all_data:import`
+
 4. Run the test suite
 
-$ rspec
+`rspec`
